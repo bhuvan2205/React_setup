@@ -1,10 +1,5 @@
-{
-  /* <div>
-    <div>
-        <h1>Hello World</h1>
-    </div>
-</div> */
-}
+import React from "react";
+import ReactDOM from "react-dom/client";
 
 const parent = React.createElement("div", { className: "parent" }, [
   React.createElement("div", { className: "child" }, [
