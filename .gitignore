@@ -1,0 +1,15 @@
+/node_modules
+/dist
+/build
+/public
+/src
+/test
+/docs
+/examples
+/tests
+/coverage
+/logs
+/tmp
+/cache
+
+.parcel-cache
