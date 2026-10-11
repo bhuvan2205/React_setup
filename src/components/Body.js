@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { restaurants } from "../utils/mockData";
 import RestaurantCard from "./RestaurantCard";
 import ShimmerCards from "./ShimmerCards";
+import { API_BASE_URL } from "../utils/constants";
 
 const Body = () => {
   const [restaurantList, setRestaurantList] = useState([]);
@@ -9,10 +10,18 @@ const Body = () => {
   const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
-    setTimeout(() => {
+    const fecthData = async () => {
+      const apiUrl = `${API_BASE_URL}/listRestaurants`;
+      const response = await fetch(apiUrl);
+      const data = await response.json();
+      const restaurants =
+        data?.data?.data?.cards?.[1]?.card?.card?.gridElements?.infoWithStyle
+          ?.restaurants;
       setRestaurantList(restaurants);
       setFilteredRestaurantList(restaurants);
-    }, 1000);
+    };
+
+    fecthData();
   }, []);
 
   const handleTopRated = () => {
@@ -57,7 +66,10 @@ const Body = () => {
       {filteredRestaurantList?.length > 0 && (
         <div className="restaurants">
           {filteredRestaurantList.map((restaurant) => (
-            <RestaurantCard key={restaurant.id} restaurant={restaurant} />
+            <RestaurantCard
+              key={restaurant?.info?.id}
+              restaurant={restaurant}
+            />
           ))}
         </div>
       )}
