@@ -13,13 +13,15 @@ const Header = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   return (
     <div className="header">
-      <img
-        src={LOGO_URL}
-        alt="logo"
-        className="logo"
-        width={100}
-        height={100}
-      />
+      <Link to="/">
+        <img
+          src={LOGO_URL}
+          alt="logo"
+          className="logo"
+          width={100}
+          height={100}
+        />
+      </Link>
 
       <ul className="nav-items">
         {routes?.map((route) => (
