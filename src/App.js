@@ -7,6 +7,7 @@ import About from "./components/About";
 import Contact from "./components/Contact";
 import Error from "./components/Error";
 import RestaurantMenu from "./components/RestaurantMenu";
+import { lazy, Suspense } from "react";
 
 const AppLayout = () => {
   return (
@@ -17,6 +18,8 @@ const AppLayout = () => {
     </div>
   );
 };
+
+const Cart = lazy(() => import("./components/Cart"));
 
 const appRouter = createBrowserRouter([
   {
@@ -32,7 +35,15 @@ const appRouter = createBrowserRouter([
         element: <About />,
       },
       { path: "/contact", element: <Contact /> },
-      {path:"/restaurant/:id", element: <RestaurantMenu />}
+      {
+        path: "/cart",
+        element: (
+          <Suspense fallback={<h1>Loading...</h1>}>
+            <Cart />
+          </Suspense>
+        ),
+      },
+      { path: "/restaurant/:id", element: <RestaurantMenu /> },
     ],
     errorElement: <Error />,
   },
