@@ -313,13 +313,29 @@ ul {
 /* Menu section */
 
 .menu-section {
-  padding-top: 24px;
+  max-width: 1000px;
+  margin: 20px auto;
+  box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.16);
+  padding: 20px 40px;
+  border-radius: 10px;
 }
 
 .menu-heading {
-  margin: 0 0 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.menu-heading h2 {
   font-size: 22px;
   font-weight: 700;
+}
+
+.menu-heading svg {
+  margin-top: 5px;
+  height: 20px;
 }
 
 /* Menu list */
@@ -359,7 +375,7 @@ ul {
 }
 
 .menu-item-description {
-  margin: 0;
+  margin: 0 0 10px;
   color: #93959f;
   font-size: 13px;
   line-height: 1.6;
