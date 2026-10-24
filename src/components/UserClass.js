@@ -14,7 +14,7 @@ class UserClass extends Component {
     this.setState({ userInfo: data });
 
     this.timer = setInterval(() => {
-      console.log("ABC");
+      console.log("Mount");
     }, 1000);
   }
 

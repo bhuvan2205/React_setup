@@ -2,6 +2,8 @@ import RestaurantCard from "./RestaurantCard";
 import ShimmerCards from "./ShimmerCards";
 import { useRestaurant } from "../hooks/useRestaurant";
 import useOnlineStatus from "../hooks/useOnlineStatus";
+import WithVegRestaurantLabel from "./HOC/WithVegRestaurantLabel";
+import { Fragment } from "react/jsx-runtime";
 
 const Body = () => {
   const {
@@ -15,6 +17,8 @@ const Body = () => {
   } = useRestaurant();
 
   const { onlineStatus } = useOnlineStatus();
+
+  const VegRestaurantLabelCard = WithVegRestaurantLabel(RestaurantCard);
 
   if (!onlineStatus) {
     return <h1>You are offline! Please check your Internet connection</h1>;
@@ -39,15 +43,19 @@ const Body = () => {
           Clear Filters
         </button>
       </div>
+
       {restaurantList.length === 0 && <ShimmerCards />}
 
       {filteredRestaurantList?.length > 0 && (
         <div className="restaurants">
           {filteredRestaurantList?.map((restaurant) => (
-            <RestaurantCard
-              key={restaurant?.info?.id}
-              restaurant={restaurant}
-            />
+            <Fragment key={restaurant?.info?.id}>
+              {restaurant?.info?.veg ? (
+                <VegRestaurantLabelCard restaurant={restaurant} />
+              ) : (
+                <RestaurantCard restaurant={restaurant} />
+              )}
+            </Fragment>
           ))}
         </div>
       )}

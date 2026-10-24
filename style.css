@@ -867,3 +867,15 @@ ul {
     margin-bottom: 20px;
   }
 }
+
+.restaurant-wrapper {
+  position: relative;
+}
+
+.restaurant-wrapper label {
+  position: absolute;
+  background: greenyellow;
+  padding: 6px 15px;
+  color: black;
+  z-index: 20;
+}

@@ -6,6 +6,8 @@ export const useRestaurant = () => {
   const [filteredRestaurantList, setFilteredRestaurantList] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
 
+  console.log(restaurantList)
+
   useEffect(() => {
     const fecthData = async () => {
       const apiUrl = `${API_BASE_URL}/listRestaurants`;
@@ -22,7 +24,6 @@ export const useRestaurant = () => {
   }, []);
 
   const handleTopRated = () => {
-    console.log(restaurantList[0])
     setFilteredRestaurantList(
         restaurantList.filter((restaurant) => restaurant.info?.avgRating > 4.5),
     );
