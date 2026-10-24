@@ -1,46 +1,24 @@
-import { useEffect, useState } from "react";
-import { restaurants } from "../utils/mockData";
 import RestaurantCard from "./RestaurantCard";
 import ShimmerCards from "./ShimmerCards";
-import { API_BASE_URL } from "../utils/constants";
+import { useRestaurant } from "../hooks/useRestaurant";
+import useOnlineStatus from "../hooks/useOnlineStatus";
 
 const Body = () => {
-  const [restaurantList, setRestaurantList] = useState([]);
-  const [filteredRestaurantList, setFilteredRestaurantList] = useState([]);
-  const [searchQuery, setSearchQuery] = useState("");
+  const {
+    handleSearch,
+    handleClearFilters,
+    handleTopRated,
+    restaurantList,
+    filteredRestaurantList,
+    searchQuery,
+    setSearchQuery,
+  } = useRestaurant();
 
-  useEffect(() => {
-    const fecthData = async () => {
-      const apiUrl = `${API_BASE_URL}/listRestaurants`;
-      const response = await fetch(apiUrl);
-      const data = await response.json();
-      const restaurants =
-        data?.data?.data?.cards?.[1]?.card?.card?.gridElements?.infoWithStyle
-          ?.restaurants;
-      setRestaurantList(restaurants);
-      setFilteredRestaurantList(restaurants);
-    };
+  const { onlineStatus } = useOnlineStatus();
 
-    fecthData();
-  }, []);
-
-  const handleTopRated = () => {
-    setFilteredRestaurantList(
-      restaurants.filter((restaurant) => restaurant.rating > 4.5),
-    );
-  };
-
-  const handleClearFilters = () => {
-    setFilteredRestaurantList(restaurants);
-  };
-
-  const handleSearch = () => {
-    const filteredRestaurants = restaurantList.filter((restaurant) =>
-      restaurant.name.toLowerCase().includes(searchQuery.toLowerCase()),
-    );
-
-    setFilteredRestaurantList(filteredRestaurants);
-  };
+  if (!onlineStatus) {
+    return <h1>You are offline! Please check your Internet connection</h1>;
+  }
 
   return (
     <div className="body">
@@ -65,7 +43,7 @@ const Body = () => {
 
       {filteredRestaurantList?.length > 0 && (
         <div className="restaurants">
-          {filteredRestaurantList.map((restaurant) => (
+          {filteredRestaurantList?.map((restaurant) => (
             <RestaurantCard
               key={restaurant?.info?.id}
               restaurant={restaurant}

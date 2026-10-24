@@ -8,7 +8,6 @@ class UserClass extends Component {
     };
   }
   async componentDidMount() {
-    console.log("Mount");
     const res = await fetch("https://api.github.com/users/bhuvan2205");
     const data = await res.json();
 

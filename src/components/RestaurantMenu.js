@@ -1,23 +1,11 @@
-import { useEffect, useState } from "react";
-import { API_BASE_URL, IMAGE_BASE_URL } from "../utils/constants";
+import { IMAGE_BASE_URL } from "../utils/constants";
 import { useParams } from "react-router-dom";
+import { useRestaurantMenu } from "../hooks/useRestaurantMenu";
 
 const RestaurantMenu = () => {
-  const [restaurantInfo, setRestaurantInfo] = useState(null);
-
   const { id } = useParams();
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const apiUrl = `${API_BASE_URL}/listRestaurantMenu/${id}`;
-      const response = await fetch(apiUrl);
-      const data = await response.json();
-
-      setRestaurantInfo(data?.data);
-    };
-
-    fetchData();
-  }, []);
+  const { restaurantInfo } = useRestaurantMenu(id);
 
   const {
     name,
