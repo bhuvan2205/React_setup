@@ -3,19 +3,19 @@ import RestaurantMenuItem from "./RestaurantMenuItem";
 import DownArrow from "../Icons/DownArrow";
 import UpArrow from "../Icons/UpArrow";
 
-const RestaurantCategory = ({ category, itemCards }) => {
-  const [showItems, setShowItems] = useState(false);
+const RestaurantCategory = ({ category, showItems, setShowIndex }) => {
+  const itemCards = category?.card?.card?.itemCards;
   return (
     <section className="menu-section">
       <div
         className="menu-heading"
         onClick={() => {
-          setShowItems((prev) => !prev);
+          setShowIndex();
         }}
       >
         <h2>
           {category?.card?.card?.title} (
-          {category?.card?.card?.itemCards.length})
+          {category?.card?.card?.itemCards?.length})
         </h2>
         <span>{!showItems ? <DownArrow /> : <UpArrow />}</span>
       </div>

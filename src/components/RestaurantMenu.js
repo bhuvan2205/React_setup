@@ -2,9 +2,11 @@ import { IMAGE_BASE_URL } from "../utils/constants";
 import { useParams } from "react-router-dom";
 import { useRestaurantMenu } from "../hooks/useRestaurantMenu";
 import RestaurantCategory from "./RestaurantCategory";
+import { useState } from "react";
 
 const RestaurantMenu = () => {
   const { id } = useParams();
+  const [showIndex, setShowIndex] = useState(0);
 
   const { restaurantInfo } = useRestaurantMenu(id);
 
@@ -17,10 +19,6 @@ const RestaurantMenu = () => {
     avgRating,
     sla,
   } = restaurantInfo?.cards?.[2]?.card?.card?.info || {};
-
-  const itemCards =
-    restaurantInfo?.cards?.[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards?.[1]
-      ?.card?.card?.itemCards || [];
 
   const categories =
     restaurantInfo?.cards?.[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards;
@@ -63,11 +61,18 @@ const RestaurantMenu = () => {
         )}
       </section>
 
-      {validCategories?.map((category) => (
+      {validCategories?.map((category, index) => (
         <RestaurantCategory
-          category={category}
-          itemCards={itemCards}
           key={category?.card?.card?.title}
+          category={category}
+          showItems={showIndex === index}
+          setShowIndex={() => {
+            if (index === showIndex) {
+              setShowIndex(null);
+            } else {
+              setShowIndex(index);
+            }
+          }}
         />
       ))}
     </main>
