@@ -1,4 +1,7 @@
+import { useDispatch } from "react-redux";
 import { useCart } from "../hooks/useCart";
+import { IMAGE_BASE_URL } from "../utils/constants";
+import { clearCart } from "../store/slice/cartSlice";
 
 const Cart = () => {
   const {
@@ -11,11 +14,24 @@ const Cart = () => {
     updateQuantity,
   } = useCart();
 
+  const dispatch = useDispatch();
+
+  const handleClearCart = () => {
+    dispatch(clearCart());
+  };
+
   return (
     <div className="cart-page">
       <header className="cart-header">
         <h1>My Shopping Cart</h1>
-        <span>{cartItems.length} Products</span>
+        <div>
+          <span>{cartItems?.length} Products </span>
+          {!!cartItems?.length && (
+            <button className="user-button" onClick={handleClearCart}>
+              Clear Cart
+            </button>
+          )}
+        </div>
       </header>
 
       {cartItems.length === 0 ? (
@@ -39,7 +55,10 @@ const Cart = () => {
             {cartItems.map((item) => (
               <div className="cart-item" key={item.id}>
                 <div className="product-info">
-                  <img src={item.image} alt={item.name} />
+                  <img
+                    src={`${IMAGE_BASE_URL}/${item?.imageId}`}
+                    alt={item.name}
+                  />
 
                   <div>
                     <h3>{item.name}</h3>
@@ -54,7 +73,9 @@ const Cart = () => {
                   </div>
                 </div>
 
-                <div className="product-price">{formatPrice(item.price)}</div>
+                <div className="product-price">
+                  {formatPrice(item.price / 100)}
+                </div>
 
                 <div className="quantity-control">
                   <button
@@ -68,14 +89,14 @@ const Cart = () => {
 
                   <button
                     onClick={() => updateQuantity(item.id, 1)}
-                    aria-label={`Increase ${item.name} quantity`}
+                    aria-label={`Increase ${item?.name} quantity`}
                   >
                     +
                   </button>
                 </div>
 
                 <div className="product-total">
-                  {formatPrice(item.price * item.quantity)}
+                  {formatPrice((item?.price / 100) * (item?.quantity ?? 1))}
                 </div>
               </div>
             ))}

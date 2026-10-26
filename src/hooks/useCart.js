@@ -1,25 +1,10 @@
-import { useState } from "react";
-import { initialCart } from "../utils/mockData";
+import { useDispatch, useSelector } from "react-redux";
 
 export const useCart = () => {
-  const [cartItems, setCartItems] = useState(initialCart);
-
-  const updateQuantity = (id, change) => {
-    setCartItems((items) =>
-      items
-        .map((item) =>
-          item.id === id ? { ...item, quantity: item.quantity + change } : item,
-        )
-        .filter((item) => item.quantity > 0),
-    );
-  };
-
-  const removeItem = (id) => {
-    setCartItems((items) => items.filter((item) => item.id !== id));
-  };
+  const { items: cartItems } = useSelector((state) => state.cart);
 
   const subtotal = cartItems.reduce(
-    (total, item) => total + item.price * item.quantity,
+    (total, item) => total + (item?.price / 100) * (item?.quantity ?? 1),
     0,
   );
 
@@ -39,7 +24,5 @@ export const useCart = () => {
     total,
     shipping,
     cartItems,
-    removeItem,
-    updateQuantity,
   };
 };

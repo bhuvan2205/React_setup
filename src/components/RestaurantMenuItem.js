@@ -1,7 +1,13 @@
-import React from "react";
+import { addToCart } from "../store/slice/cartSlice";
 import { IMAGE_BASE_URL } from "../utils/constants";
+import { useDispatch } from "react-redux";
 
 const RestaurantMenuItem = ({ item }) => {
+  const dispatch = useDispatch();
+
+  const handleAddToCart = () => {
+    dispatch(addToCart(item))
+  };
   return (
     <li className="menu-item">
       <div className="menu-item-details">
@@ -14,7 +20,9 @@ const RestaurantMenuItem = ({ item }) => {
         {item?.description && (
           <p className="menu-item-description">{item?.description}</p>
         )}
-        <button className="user-button">Add</button>
+        <button className="user-button" onClick={handleAddToCart}>
+          Add
+        </button>
       </div>
 
       {item?.imageId && (

@@ -1,24 +1,28 @@
+import { lazy, Suspense, useState } from "react";
 import ReactDOM from "react-dom/client";
-import Header from "./components/Header";
-import Body from "./components/Body";
-import Footer from "./components/Footer";
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 import About from "./components/About";
+import Body from "./components/Body";
 import Contact from "./components/Contact";
 import Error from "./components/Error";
-import { lazy, Suspense, useState } from "react";
+import Footer from "./components/Footer";
+import Header from "./components/Header";
 import UserContext from "./context/UserContext";
+import { Provider } from "react-redux";
+import appStore from "./store/appStore";
 
 const AppLayout = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   return (
-    <UserContext.Provider value={{ loggedIn: isLoggedIn, setIsLoggedIn }}>
-      <div className="app">
-        <Header />
-        <Outlet />
-        <Footer />
-      </div>
-    </UserContext.Provider>
+    <Provider store={appStore}>
+      <UserContext.Provider value={{ loggedIn: isLoggedIn, setIsLoggedIn }}>
+        <div className="app">
+          <Header />
+          <Outlet />
+          <Footer />
+        </div>
+      </UserContext.Provider>
+    </Provider>
   );
 };
 

@@ -815,6 +815,10 @@ ul {
   border-radius: 12px;
 }
 
+.empty-cart p {
+  margin: 20px auto;
+}
+
 .empty-cart button {
   padding: 12px 20px;
   border: none;
@@ -894,4 +898,18 @@ ul {
   padding: 6px 15px;
   color: black;
   z-index: 20;
+}
+
+.cart {
+  position: relative;
+}
+
+.cart span {
+  position: absolute;
+  top: -100%;
+  right: -50%;
+  color: #0f0f0f;
+  padding: 2px 10px;
+  border-radius: 50%;
+  background: orange;
 }

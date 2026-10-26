@@ -2,16 +2,20 @@ import { Link } from "react-router-dom";
 import { LOGO_URL } from "../utils/constants";
 import { useContext, useState } from "react";
 import UserContext from "../context/UserContext";
+import { useSelector } from "react-redux";
 
 const routes = [
   { name: "Home", path: "/" },
   { name: "About", path: "/about" },
   { name: "Contact", path: "/contact" },
-  { name: "Cart", path: "/cart" },
 ];
 
 const Header = () => {
   const { loggedIn, setIsLoggedIn } = useContext(UserContext);
+
+  const { items } = useSelector((store) => store.cart);
+
+  console.log(items?.[0]);
 
   return (
     <div className="header">
@@ -31,6 +35,10 @@ const Header = () => {
             <Link to={route.path}>{route.name}</Link>
           </li>
         ))}
+
+        <li>
+          <Link to="/cart" className="cart">Cart <span>{items?.length}</span></Link>
+        </li>
 
         <button
           className="button"
