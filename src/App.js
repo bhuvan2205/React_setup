@@ -6,15 +6,19 @@ import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 import About from "./components/About";
 import Contact from "./components/Contact";
 import Error from "./components/Error";
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useState } from "react";
+import UserContext from "./context/UserContext";
 
 const AppLayout = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   return (
-    <div className="app">
-      <Header />
-      <Outlet />
-      <Footer />
-    </div>
+    <UserContext.Provider value={{ loggedIn: isLoggedIn, setIsLoggedIn }}>
+      <div className="app">
+        <Header />
+        <Outlet />
+        <Footer />
+      </div>
+    </UserContext.Provider>
   );
 };
 

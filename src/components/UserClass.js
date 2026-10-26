@@ -1,4 +1,5 @@
 import { Component } from "react";
+import UserContext from "../context/UserContext";
 
 class UserClass extends Component {
   constructor(props) {
@@ -54,6 +55,10 @@ class UserClass extends Component {
             {this.state.userInfo?.email && (
               <p>✉️ {this.state.userInfo?.email}</p>
             )}
+
+            <UserContext.Consumer>
+              {(data) => console.log(data)}
+            </UserContext.Consumer>
           </div>
         </div>
 

@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { LOGO_URL } from "../utils/constants";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import UserContext from "../context/UserContext";
 
 const routes = [
   { name: "Home", path: "/" },
@@ -10,7 +11,8 @@ const routes = [
 ];
 
 const Header = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const { loggedIn, setIsLoggedIn } = useContext(UserContext);
+
   return (
     <div className="header">
       <Link to="/">
@@ -29,8 +31,12 @@ const Header = () => {
             <Link to={route.path}>{route.name}</Link>
           </li>
         ))}
-        <button className="button" onClick={() => setIsLoggedIn(!isLoggedIn)}>
-          {isLoggedIn ? "Logout" : "Login"}
+
+        <button
+          className="button"
+          onClick={() => setIsLoggedIn((prev) => !prev)}
+        >
+          {loggedIn ? "Logout" : "Login"}
         </button>
       </ul>
     </div>
