@@ -1,7 +1,7 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 
 export const useCart = () => {
-  const { items: cartItems } = useSelector((state) => state.cart);
+  const cartItems = useSelector((state) => state.cart.items);
 
   const subtotal = cartItems.reduce(
     (total, item) => total + (item?.price / 100) * (item?.quantity ?? 1),

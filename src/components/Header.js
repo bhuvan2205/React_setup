@@ -13,9 +13,8 @@ const routes = [
 const Header = () => {
   const { loggedIn, setIsLoggedIn } = useContext(UserContext);
 
-  const { items } = useSelector((store) => store.cart);
-
-  console.log(items?.[0]);
+  // const {items: cartItems} = useSelector((store) => store.cart); ---> Bad Practice
+  const cartItems = useSelector((store) => store.cart.items);
 
   return (
     <div className="header">
@@ -37,7 +36,9 @@ const Header = () => {
         ))}
 
         <li>
-          <Link to="/cart" className="cart">Cart <span>{items?.length}</span></Link>
+          <Link to="/cart" className="cart">
+            Cart <span>{cartItems?.length}</span>
+          </Link>
         </li>
 
         <button

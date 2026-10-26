@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, current } from "@reduxjs/toolkit";
 
 const initialState = { items: [] };
 
@@ -10,9 +10,12 @@ const cartSlice = createSlice({
       state.items.push(action.payload);
     },
     clearCart: (state) => {
+      // state = [] --> Not going to work
       state.items.length = 0;
     },
     removeFromCart: (state) => {
+      // console.log(state) ---> Prints the Proxy Object
+      console.log(current(state));
       state.items.pop();
     },
   },
