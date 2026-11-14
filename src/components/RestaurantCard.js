@@ -10,7 +10,7 @@ const RestaurantCard = ({ restaurant }) => {
       : `${IMAGE_BASE_URL}/${cloudinaryImageId}`;
   return (
     <Link to={`/restaurant/${id}`}>
-      <div className="restaurant card">
+      <div className="restaurant card" data-testid="restaurantCard">
         <img src={imageURL} alt={name} />
         <h3 className="title">{name}</h3>
         <p className="description">

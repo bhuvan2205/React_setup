@@ -28,12 +28,15 @@ const Body = () => {
     <div className="body">
       <div className="search">
         <input
+          data-testid="searchInput"
           type="text"
           placeholder="Search"
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
         />
-        <button onClick={handleSearch}>Search</button>
+        <button data-testid="searchButton" onClick={handleSearch}>
+          Search
+        </button>
       </div>
       <div className="filter">
         <button className="filter-button" onClick={handleTopRated}>
