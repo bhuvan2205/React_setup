@@ -31,8 +31,8 @@ global.fetch = jest.fn(() => {
   });
 });
 
-describe("Search Feature Functionality", () => {
-  it("Should render the Body Component", async () => {
+describe("Body Component", () => {
+  it("Search Feature Functionality", async () => {
     await act(async () => {
       render(
         <BrowserRouter
@@ -60,5 +60,29 @@ describe("Search Feature Functionality", () => {
 
     cards = screen.getAllByTestId("restaurantCard");
     expect(cards.length).toBe(1);
+  });
+
+  it("Should Filter Top Rated Restaurant", async () => {
+    await act(() =>
+      render(
+        <BrowserRouter
+          future={{
+            v7_startTransition: true,
+            v7_relativeSplatPath: true,
+          }}
+        >
+          <Body />
+        </BrowserRouter>,
+      ),
+    );
+
+    const topRatedFilterButton = screen.getByRole("button", {
+      name: "Top Rated",
+    });
+
+    fireEvent.click(topRatedFilterButton);
+
+    const cards = screen.getAllByTestId("restaurantCard");
+    expect(cards.length).toBe(3);
   });
 });

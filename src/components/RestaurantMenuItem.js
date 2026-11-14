@@ -9,7 +9,7 @@ const RestaurantMenuItem = ({ item }) => {
     dispatch(addToCart(item))
   };
   return (
-    <li className="menu-item">
+    <li className="menu-item" data-testid="menu-item">
       <div className="menu-item-details">
         <h3 className="menu-item-name">{item?.name}</h3>
 

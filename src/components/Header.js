@@ -37,7 +37,7 @@ const Header = () => {
 
         <li>
           <Link to="/cart" className="cart">
-            Cart <span>{cartItems?.length}</span>
+            Cart <span data-testid="cart-count">{cartItems?.length}</span>
           </Link>
         </li>
 

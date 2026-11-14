@@ -13,10 +13,10 @@ const cartSlice = createSlice({
       // state = [] --> Not going to work
       state.items.length = 0;
     },
-    removeFromCart: (state) => {
+    removeFromCart: (state, action) => {
       // console.log(state) ---> Prints the Proxy Object
       console.log(current(state));
-      state.items.pop();
+      state.items.filter(item => item.id !== action.payload);
     },
   },
 });
