@@ -29,41 +29,50 @@ const AppLayout = () => {
 const Cart = lazy(() => import("./components/Cart"));
 const RestaurantMenu = lazy(() => import("./components/RestaurantMenu"));
 
-const appRouter = createBrowserRouter([
+const appRouter = createBrowserRouter(
+  [
+    {
+      path: "/",
+      element: <AppLayout />,
+      children: [
+        {
+          path: "/",
+          element: <Body />,
+        },
+        {
+          path: "/about",
+          element: <About />,
+        },
+        { path: "/contact", element: <Contact /> },
+        {
+          path: "/cart",
+          element: (
+            <Suspense fallback={<h1>Loading...</h1>}>
+              <Cart />
+            </Suspense>
+          ),
+        },
+        {
+          path: "/restaurant/:id",
+          element: (
+            <Suspense fallback={<h1>Loading...</h1>}>
+              <RestaurantMenu />
+            </Suspense>
+          ),
+        },
+      ],
+      errorElement: <Error />,
+    },
+  ],
   {
-    path: "/",
-    element: <AppLayout />,
-    children: [
-      {
-        path: "/",
-        element: <Body />,
-      },
-      {
-        path: "/about",
-        element: <About />,
-      },
-      { path: "/contact", element: <Contact /> },
-      {
-        path: "/cart",
-        element: (
-          <Suspense fallback={<h1>Loading...</h1>}>
-            <Cart />
-          </Suspense>
-        ),
-      },
-      {
-        path: "/restaurant/:id",
-        element: (
-          <Suspense fallback={<h1>Loading...</h1>}>
-            <RestaurantMenu />
-          </Suspense>
-        ),
-      },
-    ],
-    errorElement: <Error />,
+    future: {
+      v7_relativeSplatPath: true,
+    },
   },
-]);
+);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
-root.render(<RouterProvider router={appRouter} />);
+root.render(
+  <RouterProvider router={appRouter} future={{ v7_startTransition: true }} />,
+);
