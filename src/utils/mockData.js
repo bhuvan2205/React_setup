@@ -1,97 +1,118 @@
 export const restaurants = [
   {
-    id: 1,
-    name: "The Spice Garden",
-    description: "Authentic Indian cuisine with a modern twist.",
-    image:
-      "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=2070&auto=format&fit=crop",
-    rating: 4.4,
-    deliveryTime: "42 mins",
+    info: {
+      id: "123456",
+      name: "Pizza Paradise",
+      cloudinaryImageId:
+        "RX_THUMBNAIL/IMAGES/VENDOR/2025/6/17/6def0f0f-9e6c-45c0-b5e6-05af750f27b5_795906.JPG",
+      locality: "MG Road",
+      areaName: "Central District",
+      avgRating: 4.3,
+      veg: false,
+      sla: { deliveryTime: 30 },
+    },
   },
   {
-    id: 2,
-    name: "Urban Tadka",
-    description: "Delicious North Indian dishes and traditional flavors.",
-    image:
-      "https://images.unsplash.com/photo-1552566626-52f8b828add9?q=80&w=2070&auto=format&fit=crop",
-    rating: 4.6,
-    deliveryTime: "35 mins",
+    info: {
+      id: "234567",
+      name: "Burger Hub",
+      cloudinaryImageId:
+        "RX_THUMBNAIL/IMAGES/VENDOR/2024/6/24/acfcaacc-edf0-4189-8264-d614d312c0ee_740457.JPG",
+      locality: "Park Street",
+      areaName: "Downtown",
+      avgRating: 4.5,
+      veg: false,
+      sla: { deliveryTime: 25 },
+    },
   },
   {
-    id: 3,
-    name: "Green Leaf Bistro",
-    description:
-      "Fresh vegetarian meals made with locally sourced ingredients.",
-    image:
-      "https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?q=80&w=2070&auto=format&fit=crop",
-    rating: 4.3,
-    deliveryTime: "30 mins",
+    info: {
+      id: "345678",
+      name: "Green Bites",
+      cloudinaryImageId: "e0839ff574213e6f35b3899ebf1fc597",
+      locality: "Residency Road",
+      areaName: "South Zone",
+      avgRating: 4.7,
+      veg: true,
+      sla: { deliveryTime: 20 },
+    },
   },
   {
-    id: 4,
-    name: "Burger House",
-    description: "Juicy burgers, crispy fries, and refreshing beverages.",
-    image:
-      "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=2070&auto=format&fit=crop",
-    rating: 4.5,
-    deliveryTime: "28 mins",
+    info: {
+      id: "456789",
+      name: "Spice Kingdom",
+      cloudinaryImageId: "rng/md/carousel/production/indian101",
+      locality: "Brigade Road",
+      areaName: "City Center",
+      avgRating: 4.2,
+      veg: false,
+      sla: { deliveryTime: 35 },
+    },
   },
   {
-    id: 5,
-    name: "Pizza Corner",
-    description: "Wood-fired pizzas with fresh toppings and cheesy goodness.",
-    image:
-      "https://images.unsplash.com/photo-1574071318508-1cdbab80d002?q=80&w=2070&auto=format&fit=crop",
-    rating: 4.7,
-    deliveryTime: "25 mins",
+    info: {
+      id: "567890",
+      name: "Chinese Dragon",
+      cloudinaryImageId:
+        "RX_THUMBNAIL/IMAGES/VENDOR/2025/6/18/ba9f1f59-30d5-44de-afad-df6db8471ead_9648.jpg",
+      locality: "Commercial Street",
+      areaName: "East District",
+      avgRating: 4.4,
+      veg: false,
+      sla: { deliveryTime: 28 },
+    },
   },
   {
-    id: 6,
-    name: "Chennai Kitchen",
-    description: "Authentic South Indian food packed with traditional flavors.",
-
-    image:
-      "https://images.unsplash.com/photo-1585937421612-70a008356fbe?q=80&w=2070&auto=format&fit=crop",
-    rating: 4.5,
-    deliveryTime: "38 mins",
+    info: {
+      id: "678901",
+      name: "Dessert Delight",
+      cloudinaryImageId:
+        "RX_THUMBNAIL/IMAGES/VENDOR/2024/11/8/731001f1-f1c4-4f5f-849f-79a697cb0b72_390173.jpg",
+      locality: "Lavelle Road",
+      areaName: "West End",
+      avgRating: 4.6,
+      veg: true,
+      sla: { deliveryTime: 22 },
+    },
   },
   {
-    id: 7,
-    name: "Dragon Wok",
-    description:
-      "Chinese favorites including noodles, fried rice, and stir-fry.",
-    image:
-      "https://images.unsplash.com/photo-1552611052-33e04de081de?q=80&w=2070&auto=format&fit=crop",
-    rating: 4.2,
-    deliveryTime: "40 mins",
+    info: {
+      id: "789012",
+      name: "Sushi Station",
+      cloudinaryImageId:
+        "RX_THUMBNAIL/IMAGES/VENDOR/2024/6/24/acfcaacc-edf0-4189-8264-d614d312c0ee_740457.JPG",
+      locality: "Indiranagar",
+      areaName: "Uptown",
+      avgRating: 4.8,
+      veg: false,
+      sla: { deliveryTime: 40 },
+    },
   },
   {
-    id: 8,
-    name: "BBQ Nation",
-    description: "Grilled meats, smoky flavors, and delicious barbecue dishes.",
-    image:
-      "https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=2070&auto=format&fit=crop",
-    rating: 4.6,
-    deliveryTime: "45 mins",
+    info: {
+      id: "890123",
+      name: "South Spice",
+      cloudinaryImageId:
+        "RX_THUMBNAIL/IMAGES/VENDOR/2025/6/17/6def0f0f-9e6c-45c0-b5e6-05af750f27b5_795906.JPG",
+      locality: "Jayanagar",
+      areaName: "South Bangalore",
+      avgRating: 4.5,
+      veg: true,
+      sla: { deliveryTime: 25 },
+    },
   },
   {
-    id: 9,
-    name: "Café Mocha",
-    description: "Cozy café serving coffee, sandwiches, desserts, and snacks.",
-    image:
-      "https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=2070&auto=format&fit=crop",
-    rating: 4.4,
-    deliveryTime: "22 mins",
-  },
-  {
-    id: 10,
-    name: "Royal Biryani",
-    description:
-      "Aromatic biryani prepared with authentic spices and premium ingredients.",
-    image:
-      "https://images.unsplash.com/photo-1589302168068-964664d93dc0?q=80&w=2070&auto=format&fit=crop",
-    rating: 4.8,
-    deliveryTime: "32 mins",
+    info: {
+      id: "901234",
+      name: "Pasta Palace",
+      cloudinaryImageId:
+        "RX_THUMBNAIL/IMAGES/VENDOR/2025/10/17/7bd350a8-55e7-459b-83a2-e250e670d194_14558.JPG",
+      locality: "Koramangala",
+      areaName: "Tech Hub",
+      avgRating: 4.1,
+      veg: false,
+      sla: { deliveryTime: 32 },
+    },
   },
 ];
 

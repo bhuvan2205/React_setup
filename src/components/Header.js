@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { LOGO_URL } from "../utils/constants";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import UserContext from "../context/UserContext";
 import { useSelector } from "react-redux";
 
