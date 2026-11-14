@@ -1,5 +1,3 @@
-import React from "react";
-
 const WithVegRestaurantLabel = (RestaurantCard) => {
   return (props) => (
     <div className="restaurant-wrapper">
